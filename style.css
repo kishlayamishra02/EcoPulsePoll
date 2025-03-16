@@ -1,0 +1,169 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Default animated futuristic background */
+  body.default-bg {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Animated gradient background */
+    background: linear-gradient(120deg, #111, #222, #000);
+    background-size: 200% 200%;
+    animation: defaultAnim 10s ease infinite;
+    color: #eee;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 0.5s ease-in-out;
+  }
+  
+  /* Background theme: Green for "Expand Green Spaces" */
+  body.bg-green {
+    background: linear-gradient(120deg, #0b3d0b, #00ff99, #0b3d0b);
+    background-size: 200% 200%;
+    animation: greenAnim 10s ease infinite;
+    transition: background 0.5s ease-in-out;
+  }
+  
+  /* Background theme: Blue for "Improve Public Transportation" */
+  body.bg-transport {
+    background: linear-gradient(120deg, #001133, #00ccff, #001133);
+    background-size: 200% 200%;
+    animation: transportAnim 10s ease infinite;
+    transition: background 0.5s ease-in-out;
+  }
+  
+  /* Keyframes for default animated background */
+  @keyframes defaultAnim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Keyframes for green theme */
+  @keyframes greenAnim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Keyframes for transport theme */
+  @keyframes transportAnim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Container styling */
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: rgba(20, 20, 20, 0.85);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 255, 153, 0.2);
+    border: 1px solid #333;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Floating animation */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  /* Titles */
+  .title {
+    font-size: 2.5em;
+    color: #00ff99;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+  }
+  
+  .subtitle {
+    font-size: 1.1em;
+    color: #ccc;
+    margin-bottom: 20px;
+  }
+  
+  /* Poll buttons */
+  .poll-options {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .poll-btn {
+    background: linear-gradient(45deg, #00ff99, #007755);
+    border: none;
+    border-radius: 8px;
+    color: #000000;
+    padding: 14px 24px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-width: 220px;
+    margin-bottom: 10px;
+  }
+  
+  .poll-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+  }
+  
+  /* Results section */
+  .results {
+    margin-top: 30px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #313030;
+  }
+  
+  .results-heading {
+    margin-bottom: 10px;
+    color: #00ff99;
+    font-size: 1.4em;
+  }
+  
+  .results-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    animation: pulse 2s infinite;
+  }
+  
+  /* Pulse animation for results text */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  /* Vote message styling */
+  .vote-message {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #ff6666;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 600px) {
+    .poll-btn {
+      min-width: 150px;
+    }
+    .title {
+      font-size: 2em;
+    }
+    .subtitle, .results-text {
+      font-size: 1em;
+    }
+    .results-heading {
+      font-size: 1.2em;
+    }
+  }
+  
