@@ -1,7 +1,4 @@
-//////////////////////////////////////////
-// 1. Firebase Configuration
-//////////////////////////////////////////
-// Replace these values with your actual Firebase config.
+
 const firebaseConfig = {
     apiKey: "AIzaSyDbkch3tEIbcecmakhCpggDkQimfKD6XFk",
     authDomain: "community-poll.firebaseapp.com",
@@ -16,22 +13,17 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
   
-  //////////////////////////////////////////
-  // 2. Poll Reference and Initial Setup
-  //////////////////////////////////////////
+
   
   const pollRef = db.ref("poll");
   
-  // Initialize poll counts if not present
   pollRef.once("value", (snapshot) => {
     if (!snapshot.exists()) {
       pollRef.set({ option1: 0, option2: 0 });
     }
   });
   
-  //////////////////////////////////////////
-  // 3. Real-time Results Update
-  //////////////////////////////////////////
+
   
   function updateResults() {
     pollRef.on("value", (snapshot) => {
@@ -46,15 +38,13 @@ const firebaseConfig = {
   }
   updateResults();
   
-  //////////////////////////////////////////
-  // 4. Dynamic Background Change
-  //////////////////////////////////////////
+
   
   function applyBackgroundTheme(vote) {
     const body = document.body;
-    // Remove any previous theme classes (default, green, transport)
+
     body.classList.remove("default-bg", "bg-green", "bg-transport");
-    // Apply new theme based on vote
+  
     if (vote === "option1") {
       body.classList.add("bg-green");
     } else if (vote === "option2") {
@@ -62,11 +52,8 @@ const firebaseConfig = {
     }
   }
   
-  //////////////////////////////////////////
-  // 5. Vote Storage & UI Updates
-  //////////////////////////////////////////
+
   
-  // Get the user's current vote from localStorage
   function getUserVote() {
     return localStorage.getItem("ecopulseVote");
   }
@@ -76,7 +63,7 @@ const firebaseConfig = {
     localStorage.setItem("ecopulseVote", vote);
   }
   
-  // Update the vote message on the UI
+
   function refreshVoteUI() {
     const voteMsg = document.getElementById("voteMsg");
     const currentVote = getUserVote();
@@ -88,15 +75,12 @@ const firebaseConfig = {
   }
   refreshVoteUI();
   
-  //////////////////////////////////////////
-  // 6. Vote Handlers (Allow Vote Change)
-  //////////////////////////////////////////
-  
+
   function castVote(newVote) {
     const previousVote = getUserVote();
     
     if (!previousVote) {
-      // No previous vote: simply increment the chosen option
+     
       pollRef.child(newVote).transaction((currentValue) => {
         return (currentValue || 0) + 1;
       }, (error, committed) => {
@@ -107,11 +91,11 @@ const firebaseConfig = {
         }
       });
     } else if (previousVote === newVote) {
-      // Same vote selected, notify the user
+      
       alert("You have already voted for this option.");
     } else {
-      // Changing vote: decrement previous vote and increment new vote
-      pollRef.child(previousVote).transaction((currentValue) => {
+
+        pollRef.child(previousVote).transaction((currentValue) => {
         return (currentValue || 0) - 1;
       }, (err, committed) => {
         if (!err && committed) {
@@ -137,7 +121,6 @@ const firebaseConfig = {
     castVote("option2");
   });
   
-  // On page load, if a vote already exists, apply its background theme
   const initialVote = getUserVote();
   if (initialVote) {
     applyBackgroundTheme(initialVote);
