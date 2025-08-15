@@ -1,1 +1,1 @@
-Live - https://eco-pulse-poll.netlify.app
+Live - https://ecopulsepoll.netlify.app
