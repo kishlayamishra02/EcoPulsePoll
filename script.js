@@ -1,14 +1,13 @@
-
 const firebaseConfig = {
-    apiKey: "AIzaSyDbkch3tEIbcecmakhCpggDkQimfKD6XFk",
-    authDomain: "community-poll.firebaseapp.com",
-    databaseURL: "https://community-poll-default-rtdb.firebaseio.com",
-    projectId: "community-poll",
-    storageBucket: "community-poll.firebasestorage.app",
-    messagingSenderId: "535353009519",
-    appId: "1:535353009519:web:da7a102056bfdf7826349a",
-    measurementId: "G-80SR9GT34R"
-  };
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+};
   
   firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
@@ -126,3 +125,4 @@ const firebaseConfig = {
     applyBackgroundTheme(initialVote);
   }
   
+
